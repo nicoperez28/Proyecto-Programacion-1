@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Obligatorio</title>
+    <script src="js/biblioteca.js"></script>
+    <script src="js/clases.js"></script>
+    <script src="js/funciones.js"></script>
+</head>
+
+<body>
+    -----------------------------------------------------------------------------------
+    <div id="divIngresar">
+        <h2>Ingreso</h2>
+        <form>
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" > <br><br>
+            <label for="pass">Contraseña</label>
+            <input type="password" id="pass"><br><br>
+            <input type="button" value="Ingresar" id="btnIngresar">
+            <p id="pLogin"></p>
+        </form>
+        <hr>
+        <h3>Registrar</h3>
+        <form id="formRegistro">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre"> <br><br>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido"> <br><br>
+            <label for="nomUsuario">Nombre de usuario:</label>
+            <input type="text" id="nomUsuario"> <br><br>
+            <label for="passRegistro">Contraseña:</label>
+            <input type="password" id="passRegistro"><br><br>
+            <label for="tarjeta">Numero tarjeta:</label>
+            <input type="texto" placeholder="xxxx-xxxx-xxxx-xxxx" id="tarjeta">
+            <label for="cvc">CVC:</label>
+            <input type="number" placeholder="xxx" id="cvc"><br><br>
+            <p>La contraseña debe tener como minimo:</p>
+            <ul>
+                <li>Minimo 5 caracteres</li>
+                <li>Una mayuscula</li>
+                <li>Una minuscula</li>
+                <li>Un numero</li>
+            </ul>
+            <p>*Todos los campos son obligatorios*</p>
+            <P id="pRegistro"></P>
+            <input type="button" value="Crear usuario" id="btnCrearUsuario">
+        </form>
+    </div>
+    -----------------------------------------------------------------------------------
+    <div id="divUsuario">
+        <h3>Alquiler de instancias</h3>
+        <h4>Tipos de instancias</h4>
+        <label>Optimizadas para computos</label>
+        <ul>
+            <li>c7.small (costo por alquiler: U$S 20 - costo por encendido: USD 2.50)
+                <input type="radio" name="radioBoton" checked id="c7smallBoton"><span id="c7small"></span>
+            </li>
+            <li>c7.medium (costo por alquiler: U$S 30 - costo por encendido: USD 3.50)
+                <input type="radio" name="radioBoton" id="c7mediumBoton"><span id="c7mediumSpan"></span>
+            </li>
+            <li>c7.large (costo por alquiler: U$S 50 - costo por encendido: USD 6.00)
+                <input type="radio" name="radioBoton" id="c7largeBoton"><span id="c7largeSpan"></span>
+            </li>
+        </ul><br>
+        <label>Optimizadas para memoria</label>
+        <ul>
+            <li>r7.small (costo por alquiler: U$S 35 - costo por encendido: USD 4.00)
+                <input type="radio" name="radioBoton" id="r7smallBoton"><span id="r7smallSpan"></span>
+            </li>
+            <li>r7.medium (costo por alquiler: U$S 50 - costo por encendido: USD 6.50)
+                <input type="radio" name="radioBoton" id="r7mediumBoton"><span id="r7mediumSpan"></span>
+            </li>
+            <li>r7.large (costo por alquiler: U$S 60 - costo por encendido: USD 7.00)
+                <input type="radio" name="radioBoton" id="r7largeBoton"><span id="r7largeSpan"></span>
+            </li>
+        </ul><br>
+        <label>Optimizadas para almacenamiento</label>
+        <ul>
+            <li>i7.medium (costo por alquiler: U$S 30 - costo por encendido: USD 3.50)
+                <input type="radio" name="radioBoton" id="i7mediumBoton"><span id="i7mediumspan"></span>
+            </li>
+            <li>i7.large (costo por alquiler: U$S 50 - costo por encendido: USD 6.50)
+                <input type="radio" name="radioBoton" id="i7largeBoton"><span id="i7largespan"></span>
+            </li>
+        </ul>
+        <input type="button" value="Alquilar instancia" id="btnAlquilar">
+        <hr>
+        <h3>Listado de instancias</h3>
+        <select id="listaDeInstancias">
+            <option value="TodasLasInstancias">Todas las instancias</option>
+            <option value="encendido">Encedidas</option>
+            <option value="apagado">Apagadas</option>
+        </select><br><br>
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th>Instancia</th>
+                    <th>Estado</th>
+                    <th>Veces Iniciada</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tBodyTabla"></tbody>
+        </table>
+        <hr>
+        <h3>Costos Totales</h3>
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th>Tipo instancia</th>
+                    <th>Costo por encendido</th>
+                    <th>Total de veces encendidas</th>
+                    <th>Costo total</th>
+                </tr>
+            </thead>
+            <tbody id="tBodyTablaCostos"></tbody>
+        </table><br>
+        <p id="contadorEncendidos"></p>
+        <input type="button" value="Salir" id="btnSalir">
+        <hr>
+    </div>
+    -----------------------------------------------------------------------------------
+    <div id="divAdmin">
+        <h3>Registro de usuarios</h3>
+        <label for="selectParaValidar">Usuarios a validar: </label>
+        <select id="selectParaValidar"></select>
+        <input type="button" value="Validar" id="btnValidar"><br><br>
+        <label for="selectParaBloquear">Usuarios a bloquear: </label>
+        <select id="selectParaBloquear"></select>
+        <input type="button" value="Bloquear" id="btnBloquear"><br><br>
+        <label for="selectParaDesbloquear">Usuarios a desbloquear: </label>
+        <select id="selectParaDesbloquear"></select>
+        <input type="button" value="Desbloquear" id="btnDesbloquear">
+        <hr>
+        <h3>Modificar stock</h3>
+        <select id="selectStock"></select>
+        <input type="number" id="numStock">
+        <input type="button" value="Modificar" id="btnNumStock">
+
+        <hr>
+        <h3>Informe de maquinas</h3>
+        <table border="1px">
+            <thead>
+                <tr>
+                    <td>Tipos de instancia</td>
+                    <td>Cantidad</td>
+                    <td>Ingreso</td>
+                </tr>
+            </thead>
+            <tbody id="tBodyTablaAdmin"></tbody>
+        </table>
+        <p id="pTotalDinero">El Ingreso total es: <span id="spanIngreso">0</span></p>
+        <input type="button" value="Salir" id="btnSalirAdmin">
+    </div>
+</body>
+
+</html>
